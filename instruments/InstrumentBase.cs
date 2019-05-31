@@ -15,7 +15,7 @@ namespace MusicController
             string npName = Assembly.GetExecutingAssembly().GetName().Name.ToString();
             string musicPath = @".music";
             var assembly = Assembly.GetExecutingAssembly();
-            System.IO.Stream stream = assembly.GetManifestResourceStream(npName + musicPath + ".guitar.wav");
+            System.IO.Stream stream = assembly.GetManifestResourceStream(npName + musicPath + "." + insName + ".wav");
             sp = new SoundPlayer(stream);
             threshold = config.threshold;
             delay = config.delay;
@@ -80,6 +80,7 @@ namespace MusicController
     public class InstrumentConfig
     {
         public double threshold;
+        public double runningThreshold;
         public double delay;
         /// <summary>
         /// is discrete?

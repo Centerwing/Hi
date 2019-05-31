@@ -19,10 +19,10 @@ namespace Microsoft.Samples.Kinect.DiscreteGestureBasics
     public class GestureDetector : IDisposable
     {
         /// <summary> Path to the gesture database that was trained with VGB </summary>
-        private readonly string gestureDatabase = @"Database\guitar.gba";
+        private readonly string gestureDatabase = @"Database\mark.gbd";
 
         /// <summary> Name of the discrete gesture in the database that we want to track </summary>
-        private readonly string[] gestureNames = { "guitar", "drums", "keyboard", "up", "down", "kick" };
+        private readonly string[] gestureNames = { "guitar", "drums", "keyboard" };
 
         /// <summary> Gesture frame source which should be tied to a body tracking ID </summary>
         private VisualGestureBuilderFrameSource vgbFrameSource = null;
@@ -33,7 +33,6 @@ namespace Microsoft.Samples.Kinect.DiscreteGestureBasics
         //<~>my own code
         private MusicController mc = null;
         
-        //</~>
 
         /// <summary>
         /// Initializes a new instance of the GestureDetector class along with the gesture frame source and reader
@@ -188,6 +187,7 @@ namespace Microsoft.Samples.Kinect.DiscreteGestureBasics
                                 {
                                     // update the GestureResultView object with new gesture result values
                                     this.GestureResultView.UpdateGestureResult(true, result.Detected, result.Confidence);
+                                    //
                                     this.mc.ProcessGestureResults(discreteResults);
 
                                 }

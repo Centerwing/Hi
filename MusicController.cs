@@ -29,7 +29,7 @@
             string text = System.IO.File.OpenText("config.json").ReadToEnd();
 
             var dic = JsonConvert.DeserializeObject<Dictionary<string, InstrumentConfig>>(text);
-
+            instruments = new Dictionary<string, InstrumentBase>();
             //add all instruments;
             var config = new InstrumentConfig();
             {
@@ -57,7 +57,6 @@
             foreach (var gestureResult in discreteResults)
             {
                 instruments[gestureResult.Key.Name].Play(gestureResult.Value.Confidence);
-
             }
         }
         //npName===namespaceName
